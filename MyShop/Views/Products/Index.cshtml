@@ -1,0 +1,58 @@
+﻿@model IEnumerable<MyShop.Models.product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Products</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary"})
+</p>
+<table class="table table-bordered table-condensed table-hover table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.prodname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.brand.brand)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.category.category)
+        </th>
+        <th>Actions</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.prodname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.quantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.brand.brand)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.category.category)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { @id=item.id }, new {@class = "btn btn-primary" }) |
+            @Html.ActionLink("Details", "Details", new { @id=item.id }, new { @class = "btn btn-info" }) |
+            @Html.ActionLink("Delete", "Delete", new {@id=item.id }, new { @class = "btn btn-warning" })
+        </td>
+    </tr>
+}
+
+</table>
